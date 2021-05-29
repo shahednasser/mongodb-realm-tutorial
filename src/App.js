@@ -12,13 +12,12 @@ import * as Realm from 'realm-web'
 import Navigation from "./components/Navigation"
 import Authentication from "./pages/Authentication"
 import LogOut from "./pages/LogOut"
+import AddReview from "./pages/AddReview"
 
 function App() {
   const [client, setClient] = useState(null)
   const [user, setUser] = useState(null)
   const [app, setApp] = useState(new Realm.App({id: process.env.REACT_APP_REALM_APP_ID}))
-
-  console.log(app.currentUser)
 
   useEffect(() => {
     async function init () {
@@ -47,6 +46,7 @@ function App() {
             <Route path="/signup" render={() => renderComponent(Authentication, {type: 'create'})} />
             <Route path="/signin" render={() => renderComponent(Authentication)} />
             <Route path="/logout" render={() => renderComponent(LogOut)} />
+            <Route path="/review/:id" render={() => renderComponent(AddReview)} />
             <Route path="/" render={() => renderComponent(Home)} />
           </Switch>
         </Container>

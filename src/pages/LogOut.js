@@ -4,10 +4,10 @@ import * as Realm from 'realm-web'
 import { useHistory } from "react-router"
 import { isAnon } from "../utils"
 
-function LogOut ({mongoContext: {app, setUser, setClient}}) {
+function LogOut ({mongoContext: {app, user, setUser, setClient}}) {
     const history = useHistory()
 
-    if (isAnon()) {
+    if (isAnon(user)) {
         history.push('/')
     }
 

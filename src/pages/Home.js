@@ -8,7 +8,6 @@ function Home ({mongoContext: {client, user}}) {
 
     useEffect(() => {
         async function getData () {
-            console.log("getdata")
             const rests = client.db('sample_restaurants').collection('restaurants')
             setRestaurants((await rests.find()).slice(0, 10))
             setLoading(false)
@@ -27,7 +26,7 @@ function Home ({mongoContext: {client, user}}) {
                 </div>
             )}
             {restaurants.map((restaurant) => (
-                <RestaurantCard key={restaurant._id} restaurant={restaurant} />
+                <RestaurantCard key={restaurant._id} restaurant={restaurant} user={user} />
             ))}
         </div>
     )
